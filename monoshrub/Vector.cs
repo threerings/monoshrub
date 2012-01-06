@@ -111,6 +111,10 @@ public struct Vector
         float dx = other.x - x, dy = other.y - y;
         return new Vector(x + t*dx, y + t*dy);
     }
+
+    override public string ToString () {
+        return Vectors.VectorToString(x, y);
+    }
 }
 }
 

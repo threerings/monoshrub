@@ -110,6 +110,14 @@ public class Vectors
         float ny = (x * sinnega + y * cosnega);
         return new Vector(nx / sx, ny / sy); // unscale
     }
+
+    /**
+     * Returns a string describing the supplied vector, of the form <code>+x+y</code>,
+     * <code>+x-y</code>, <code>-x-y</code>, etc.
+     */
+    public static String VectorToString (float x, float y) {
+        return MathUtil.ToString(x) + MathUtil.ToString(y);
+    }
 }
 }
 

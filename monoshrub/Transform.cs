@@ -10,14 +10,16 @@ public interface Transform
 {
     float ScaleX { get; set; }
     float ScaleY { get; set; }
+    Vector Scale { get; set; }
     float Rotation { get; set; }
     float Tx { get; set; }
     float Ty { get; set; }
+    Vector Translation { get; set; }
     int Generality { get; }
 
     Transform ScaleXBy (float scaleX);
     Transform ScaleYBy (float scaleY);
-    Transform Scale (float scaleX, float scaleY);
+    Transform ScaleBy (float scaleX, float scaleY);
     Transform Rotate (float angle);
     Transform TranslateX (float tx);
     Transform TranslateY (float ty);

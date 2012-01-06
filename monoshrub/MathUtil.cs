@@ -2,6 +2,7 @@
 // monoshrub - Copyright 2012 Three Rings Design, Inc.
 
 using System;
+using System.Text;
 
 namespace monoshrub {
 
@@ -170,6 +171,55 @@ public class MathUtil
     public static float MirrorAngle (float a) {
         return (a > 0f ? (float) Math.PI : (float) -Math.PI) - a;
     }
+
+    /**
+     * Sets the number of decimal places to show when formatting values. By default, they are
+     * formatted to three decimal places.
+     */
+    public static void SetToStringDecimalPlaces (int places) {
+        if (places < 0) throw new ArgumentException("Decimal places must be >= 0.");
+        TO_STRING_DECIMAL_PLACES = places;
+    }
+
+    /**
+     * Formats the supplied value, truncated to the currently configured number of decimal places.
+     * The value is also always preceded by a sign (e.g. +1.0 or -0.5).
+     */
+    public static String ToString (float val) {
+        return ToString(val, TO_STRING_DECIMAL_PLACES);
+    }
+
+    /**
+     * Formats the supplied floating point value, truncated to the given number of decimal places.
+     * The value is also always preceded by a sign (e.g. +1.0 or -0.5).
+     */
+    public static String ToString (float val, int decimalPlaces) {
+        StringBuilder buf = new StringBuilder();
+        if (val >= 0) buf.Append("+");
+        else {
+            buf.Append("-");
+            val = -val;
+        }
+        int ivalue = (int)val;
+        buf.Append(ivalue);
+        if (decimalPlaces > 0) {
+            buf.Append(".");
+            for (int ii = 0; ii < decimalPlaces; ii++) {
+                val = (val - ivalue) * 10;
+                ivalue = (int)val;
+                buf.Append(ivalue);
+            }
+            // trim trailing zeros
+            for (int ii = 0; ii < decimalPlaces-1; ii++) {
+                if (buf[buf.Length-1] == '0') {
+                    buf.Length -= 1;
+                }
+            }
+        }
+        return buf.ToString();
+    }
+
+    protected static int TO_STRING_DECIMAL_PLACES = 3;
 }
 }
 

@@ -51,6 +51,10 @@ public struct Point
         float sina = FloatMath.Sin(angle), cosa = FloatMath.Cos(angle);
         return new Point(x*cosa - y*sina, x*sina + y*cosa);
     }
+
+    override public string ToString () {
+        return Points.PointToString(x, y);
+    }
 }
 }
 

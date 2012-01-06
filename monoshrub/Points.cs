@@ -69,6 +69,14 @@ public class Points
         float ny = (x * sinnega + y * cosnega);
         return new Point(nx / sx, ny / sy); // unscale
     }
+
+    /**
+     * Returns a string describing the supplied point, of the form <code>+x+y</code>,
+     * <code>+x-y</code>, <code>-x-y</code>, etc.
+     */
+    public static String PointToString (float x, float y) {
+        return MathUtil.ToString(x) + MathUtil.ToString(y);
+    }
 }
 }
 

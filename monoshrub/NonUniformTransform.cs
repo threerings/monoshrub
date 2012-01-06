@@ -13,9 +13,11 @@ public class NonUniformTransform : Transform
 
     public float ScaleX { get; set; }
     public float ScaleY { get; set; }
+    public Vector Scale { get { return new Vector(ScaleX, ScaleY); } set { ScaleX = value.x; ScaleY = value.y; } }
     public float Rotation { get; set; }
     public float Tx { get; set; }
     public float Ty { get; set; }
+    public Vector Translation { get { return new Vector(Tx, Ty); } set { Tx = value.x; Ty = value.y; } }
     public int Generality { get { return GENERALITY; } }
 
     public NonUniformTransform ()
@@ -53,7 +55,7 @@ public class NonUniformTransform : Transform
         return this;
     }
 
-    public Transform Scale (float scaleX, float scaleY)
+    public Transform ScaleBy (float scaleX, float scaleY)
     {
         ScaleXBy(scaleX);
         ScaleYBy(scaleY);
@@ -159,6 +161,10 @@ public class NonUniformTransform : Transform
 
     public Transform Clone () {
         return new NonUniformTransform(ScaleX, ScaleY, Rotation, Tx, Ty);
+    }
+
+    override public string ToString () {
+        return "nonunif [scale=" + Scale + ", rot=" + Rotation + ", trans=" + Translation + "]";
     }
 }
 }
