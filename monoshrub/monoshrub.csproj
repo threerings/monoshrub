@@ -49,6 +49,8 @@
     <Compile Include="Vectors.cs" />
     <Compile Include="MathUtil.cs" />
     <Compile Include="FloatMath.cs" />
+    <Compile Include="NonUniformTransform.cs" />
+    <Compile Include="Transform.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

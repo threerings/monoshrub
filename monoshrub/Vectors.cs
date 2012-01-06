@@ -104,7 +104,7 @@ public class Vectors
      * Inverse transforms a point as specified, storing the result in the point provided.
      * @return a reference to the result vector, for chaining.
      */
-    public static Vector inverseTransform (float x, float y, float sx, float sy, float rotation) {
+    public static Vector InverseTransform (float x, float y, float sx, float sy, float rotation) {
         float sinnega = FloatMath.Sin(-rotation), cosnega = FloatMath.Cos(-rotation);
         float nx = (x * cosnega - y * sinnega); // unrotate
         float ny = (x * sinnega + y * cosnega);
